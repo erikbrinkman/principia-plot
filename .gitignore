@@ -6,3 +6,11 @@
 # Node #
 ########
 /node_modules
+
+# TypeScript #
+##############
+/lib
+
+# Project #
+###########
+/test/*.svg

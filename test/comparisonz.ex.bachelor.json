@@ -1,0 +1,26 @@
+{
+  "type": "comparisonz",
+  "format": ".2p",
+  "data": [
+    {
+      "name": "Health Professions",
+      "value": 0.848
+    },
+    {
+      "name": "Psychology",
+      "value": 0.767
+    },
+    {
+      "name": "Biology",
+      "value": 0.587423969
+    },
+    {
+      "name": "Math and Statistics",
+      "value": 0.431
+    },
+    {
+      "name": "Computer Science",
+      "value": 0.182
+    }
+  ]
+}

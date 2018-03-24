@@ -1,0 +1,32 @@
+[
+  {
+    "jacks": 0,
+    "mean": 73,
+    "stddev": 7
+  },
+  {
+    "jacks": 5,
+    "mean": 89,
+    "stddev": 9
+  },
+  {
+    "jacks": 10,
+    "mean": 101,
+    "stddev": 7
+  },
+  {
+    "jacks": 15,
+    "mean": 109,
+    "stddev": 4
+  },
+  {
+    "jacks": 20,
+    "mean": 123,
+    "stddev": 4
+  },
+  {
+    "jacks": 25,
+    "mean": 134,
+    "stddev": 4
+  }
+]
