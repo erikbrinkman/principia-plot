@@ -1,6 +1,6 @@
 {
   "name": "principia-plot",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "A library for making plots based off of principae",
   "bin": "bin/cmd.js",
   "scripts": {
@@ -11,7 +11,11 @@
     "docs": "typedoc --out docs src",
     "style": "cp resources/base_style.css resources/princ_style.css && jq -rf resources/themes.jq resources/themes.json >> resources/princ_style.css"
   },
-  "files": ["bin", "lib", "resources/princ_style.css"],
+  "files": [
+    "bin",
+    "lib",
+    "resources/princ_style.css"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/erikbrinkman/principia-plot.git"
