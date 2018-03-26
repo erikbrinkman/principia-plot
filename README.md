@@ -298,7 +298,6 @@ Future Plot Types
 To Do
 ----
 
-- Add help to command, point to this page
 - Add example images to plots
 - Take better advantage of class inheritance for general setup, like classing and root behavior
 - Test colors, themes, line-styles, spans

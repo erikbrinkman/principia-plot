@@ -7,7 +7,7 @@ describe("Evolution Line Plot", () => {
   const base = fs.readFileSync("test/evolution.ex.bachelor.json")
 
   it("generates the default svg", () => {
-    cp.execSync("./bin/cmd.js -c test/evolution.ex.bachelor.css -o test/evolution.ex.bachelor.svg", {
+    cp.execFileSync("./bin/cmd.js", ["-c", "test/evolution.ex.bachelor.css", "-o", "test/evolution.ex.bachelor.svg"], {
       input: base,
       encoding: "utf-8",
     });
@@ -16,7 +16,7 @@ describe("Evolution Line Plot", () => {
   it("works with different themes", () => {
     const spec = JSON.parse(base);
     spec.classed = "princ--paired";
-    cp.execSync("./bin/cmd.js -c test/evolution.ex.bachelor.css -o test/evolution.ex.bachelor.theme.svg", {
+    cp.execFileSync("./bin/cmd.js", ["-c", "test/evolution.ex.bachelor.css", "-o", "test/evolution.ex.bachelor.theme.svg"], {
       input: JSON.stringify(spec),
       encoding: "utf-8",
     });
@@ -29,7 +29,7 @@ describe("Evolution Line Plot", () => {
     spec.data[2].classed = "princ--taubman-teal princ--dash";
     spec.data[3].classed = "princ--wave-field-green princ--dot";
     spec.data[4].classed = "princ--umich-maize princ--dash-dot";
-    cp.execSync("./bin/cmd.js -c test/evolution.ex.bachelor.css -o test/evolution.ex.bachelor.style.svg", {
+    cp.execFileSync("./bin/cmd.js", ["-c", "test/evolution.ex.bachelor.css", "-o", "test/evolution.ex.bachelor.style.svg"], {
       input: JSON.stringify(spec),
       encoding: "utf-8",
     });

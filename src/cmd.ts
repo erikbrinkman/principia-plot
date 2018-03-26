@@ -4,6 +4,7 @@ import * as d3 from "d3";
 import * as fs from "fs";
 import * as os from "os";
 import * as path from "path";
+import * as stream from "stream";
 import * as yargs from "yargs";
 import { Scale } from "./aliases";
 import { Evolution, EvolutionItem } from "./evolution";
@@ -101,6 +102,9 @@ const stylePaths = [
 ];
 
 const args = yargs
+  .usage(
+    "$0",
+    "Generate a principia svg from a provided json specification. See https://github.com/erikbrinkman/principia-plot#readme for details about how to write a specification.")
   .option("input", {
     "alias": "i",
     "default": "stdin",
@@ -120,6 +124,7 @@ const args = yargs
   .help()
   .alias("version", "V")
   .alias("help", "h")
+  .wrap(yargs.terminalWidth())
   .argv;
 
 const config = JSON.parse(fs.readFileSync(args.input === "stdin" ? 0 : args.input, {encoding: "utf-8"}));
@@ -146,22 +151,7 @@ const style = document.createElement("style");
 style.textContent = styleTexts.map(t => t.replace(/\s+/g, " ")).join(" ");
 svg.appendChild(style);
 
-// FIXME Make this better. This is necessary otherwise we get errors on output
-const size = 4096;
-let result = svg.outerHTML;
-if (args.output === "stdout") {
-  args.output = 1;
-} else {
-  try {
-    fs.truncateSync(args.output);
-  } catch (err) {
-    if (err.code !== "ENOENT") {
-      throw err;
-    }
-  }
-}
-while (result.length > size) {
-  fs.appendFileSync(args.output, result.substr(0, size));
-  result = result.substr(size);
-}
-fs.appendFileSync(args.output, result);
+const buff = new stream.Readable();
+buff.push(svg.outerHTML);
+buff.push(null); // tslint:disable-line:no-null-keyword
+buff.pipe(args.output === "stdout" ? process.stdout : fs.createWriteStream(args.output));
