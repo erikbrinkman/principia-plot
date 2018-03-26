@@ -1,0 +1,10 @@
+/docs
+/src
+/test
+/tsconfig.json
+/tslint.json
+/.travis.yml
+
+.*.un~
+
+# vim: set syntax=gitignore:
