@@ -102,9 +102,7 @@ const stylePaths = [
 ];
 
 const args = yargs
-  .usage(
-    "$0",
-    "Generate a principia svg from a provided json specification. See https://github.com/erikbrinkman/principia-plot#readme for details about how to write a specification.")
+  .usage((process.env.__PRINC_NAME__ || "$0") + "\n\nGenerate a principia svg from a provided json specification. See https://github.com/erikbrinkman/principia-plot#readme for details about how to write a specification.")
   .option("input", {
     "alias": "i",
     "default": "stdin",
