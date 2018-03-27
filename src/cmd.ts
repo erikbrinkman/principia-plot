@@ -94,7 +94,6 @@ const funcs: {[i: string]: (conf: any, svg: SVGSVGElement) => void} = {
   "comparisonz": compz,
 };
 
-const styleTexts: string[] = [];
 const stylePaths = [
   path.join(path.dirname(__dirname), "resources", "princ_style.css"),
   path.join(os.homedir(), ".princ_style.css"),
@@ -130,9 +129,15 @@ const dom = new JSDOM();
 const { window } = dom;
 const { document } = window;
 const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+funcs[config.type](config, svg);
+
+const buff = new stream.Readable();
+buff.push(svg.outerHTML.slice(0, -6));
+buff.push("<style>");
+// FIXME minify
 stylePaths.forEach((cssFile: string) => {
   try {
-    styleTexts.push(fs.readFileSync(cssFile, {encoding: "utf-8"}));
+    buff.push(fs.readFileSync(cssFile, "utf-8"));
   } catch (err) {
     if (err.code !== "ENOENT") {
       throw err;
@@ -140,16 +145,8 @@ stylePaths.forEach((cssFile: string) => {
   }
 });
 args.style.forEach((cssFile: string) => {
-  styleTexts.push(fs.readFileSync(cssFile, {encoding: "utf-8"}));
+  buff.push(fs.readFileSync(cssFile, "utf-8"));
 });
-
-funcs[config.type](config, svg);
-
-const style = document.createElement("style");
-style.textContent = styleTexts.map(t => t.replace(/\s+/g, " ")).join(" ");
-svg.appendChild(style);
-
-const buff = new stream.Readable();
-buff.push(svg.outerHTML);
+buff.push("</style></svg>");
 buff.push(null); // tslint:disable-line:no-null-keyword
 buff.pipe(args.output === "stdout" ? process.stdout : fs.createWriteStream(args.output));
