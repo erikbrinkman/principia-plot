@@ -25,11 +25,13 @@
   },
   "homepage": "https://github.com/erikbrinkman/principia-plot#readme",
   "dependencies": {
+    "clean-css": "^4.1.11",
     "d3": "^4.12.0",
     "jsdom": "^11.6.2",
     "yargs": "^11.0.0"
   },
   "devDependencies": {
+    "@types/clean-css": "^3.4.30",
     "@types/d3": "^4.12.0",
     "@types/jsdom": "^11.0.4",
     "@types/node": "^8.5.10",

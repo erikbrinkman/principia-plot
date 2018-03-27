@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 // vim: set syntax=typescript:
+import * as CleanCSS from "clean-css";
 import * as d3 from "d3";
 import * as fs from "fs";
 import * as os from "os";
@@ -131,13 +132,24 @@ const { document } = window;
 const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
 funcs[config.type](config, svg);
 
+const css = new CleanCSS();
+function loadCss(file: string): string {
+  const minified = css.minify(fs.readFileSync(file, "utf-8"));
+  if (minified.errors.length) {
+    throw new Error(`Couldn't parse css from file ${file}. Got errors ${minified.errors.join(" ")}`);
+  } else if (minified.warnings.length) {
+    throw new Error(`Couldn't parse css from file ${file}. Got warnings ${minified.warnings.join(" ")}`);
+  } else {
+    return minified.styles;
+  }
+}
+
 const buff = new stream.Readable();
 buff.push(svg.outerHTML.slice(0, -6));
 buff.push("<style>");
-// FIXME minify
 stylePaths.forEach((cssFile: string) => {
   try {
-    buff.push(fs.readFileSync(cssFile, "utf-8"));
+    buff.push(loadCss(cssFile));
   } catch (err) {
     if (err.code !== "ENOENT") {
       throw err;
@@ -145,7 +157,7 @@ stylePaths.forEach((cssFile: string) => {
   }
 });
 args.style.forEach((cssFile: string) => {
-  buff.push(fs.readFileSync(cssFile, "utf-8"));
+  buff.push(loadCss(cssFile));
 });
 buff.push("</style></svg>");
 buff.push(null); // tslint:disable-line:no-null-keyword
