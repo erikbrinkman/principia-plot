@@ -76,11 +76,10 @@
 								<li class="tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported"><a href="_cmd_.html#args" class="tsd-kind-icon">args</a></li>
 								<li class="tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported"><a href="_cmd_.html#buff" class="tsd-kind-icon">buff</a></li>
 								<li class="tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported"><a href="_cmd_.html#config" class="tsd-kind-icon">config</a></li>
+								<li class="tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported"><a href="_cmd_.html#css" class="tsd-kind-icon">css</a></li>
 								<li class="tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported"><a href="_cmd_.html#document" class="tsd-kind-icon">document</a></li>
 								<li class="tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported"><a href="_cmd_.html#dom" class="tsd-kind-icon">dom</a></li>
-								<li class="tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported"><a href="_cmd_.html#style" class="tsd-kind-icon">style</a></li>
 								<li class="tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported"><a href="_cmd_.html#stylepaths" class="tsd-kind-icon">style<wbr>Paths</a></li>
-								<li class="tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported"><a href="_cmd_.html#styletexts" class="tsd-kind-icon">style<wbr>Texts</a></li>
 								<li class="tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported"><a href="_cmd_.html#svg" class="tsd-kind-icon">svg</a></li>
 								<li class="tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported"><a href="_cmd_.html#window" class="tsd-kind-icon">window</a></li>
 							</ul>
@@ -90,6 +89,7 @@
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-function tsd-parent-kind-external-module tsd-is-not-exported"><a href="_cmd_.html#compz" class="tsd-kind-icon">compz</a></li>
 								<li class="tsd-kind-function tsd-parent-kind-external-module tsd-is-not-exported"><a href="_cmd_.html#evo" class="tsd-kind-icon">evo</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-external-module tsd-is-not-exported"><a href="_cmd_.html#loadcss" class="tsd-kind-icon">load<wbr>Css</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section tsd-is-not-exported">
@@ -113,7 +113,7 @@
 					<div class="tsd-signature tsd-kind-icon">args<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Arguments</span><span class="tsd-signature-symbol"> =&nbsp;yargs.usage((process.env.__PRINC_NAME__ || &quot;$0&quot;) + &quot;\n\nGenerate a principia svg from a provided json specification. See https://github.com/erikbrinkman/principia-plot#readme for details about how to write a specification.&quot;).option(&quot;input&quot;, {&quot;alias&quot;: &quot;i&quot;,&quot;default&quot;: &quot;stdin&quot;,&quot;describe&quot;: &quot;Take input json from file.&quot;,}).option(&quot;output&quot;, {&quot;alias&quot;: &quot;o&quot;,&quot;default&quot;: &quot;stdout&quot;,&quot;describe&quot;: &quot;Output svg to file.&quot;,}).option(&quot;style&quot;, {&quot;alias&quot;: [&quot;css&quot;, &quot;c&quot;, &quot;s&quot;],&quot;array&quot;: true,&quot;default&quot;: [],&quot;describe&quot;: &quot;Add files as css styling for svg. Any file specified here will be added in addition to any of the following files in order: &quot; + stylePaths.map(p &#x3D;&gt; &#x27;&quot;&#x27; + p + &#x27;&quot;&#x27;).join(&quot;, &quot;),}).help().alias(&quot;version&quot;, &quot;V&quot;).alias(&quot;help&quot;, &quot;h&quot;).wrap(yargs.terminalWidth()).argv</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/erikbrinkman/principia-plot/blob/edd0432/src/cmd.ts#L104">cmd.ts:104</a></li>
+							<li>Defined in <a href="https://github.com/erikbrinkman/principia-plot/blob/a126109/src/cmd.ts#L104">cmd.ts:104</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -123,7 +123,7 @@
 					<div class="tsd-signature tsd-kind-icon">buff<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Readable</span><span class="tsd-signature-symbol"> =&nbsp;new stream.Readable()</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/erikbrinkman/principia-plot/blob/edd0432/src/cmd.ts#L152">cmd.ts:152</a></li>
+							<li>Defined in <a href="https://github.com/erikbrinkman/principia-plot/blob/a126109/src/cmd.ts#L147">cmd.ts:147</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -133,7 +133,17 @@
 					<div class="tsd-signature tsd-kind-icon">config<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol"> =&nbsp;JSON.parse(fs.readFileSync(args.input &#x3D;&#x3D;&#x3D; &quot;stdin&quot; ? 0 : args.input, {encoding: &quot;utf-8&quot;}))</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/erikbrinkman/principia-plot/blob/edd0432/src/cmd.ts#L128">cmd.ts:128</a></li>
+							<li>Defined in <a href="https://github.com/erikbrinkman/principia-plot/blob/a126109/src/cmd.ts#L128">cmd.ts:128</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported">
+					<a name="css" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> css</h3>
+					<div class="tsd-signature tsd-kind-icon">css<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">CleanCSS</span><span class="tsd-signature-symbol"> =&nbsp;new CleanCSS()</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/erikbrinkman/principia-plot/blob/a126109/src/cmd.ts#L135">cmd.ts:135</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -143,7 +153,7 @@
 					<div class="tsd-signature tsd-kind-icon">document<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Document</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/erikbrinkman/principia-plot/blob/edd0432/src/cmd.ts#L131">cmd.ts:131</a></li>
+							<li>Defined in <a href="https://github.com/erikbrinkman/principia-plot/blob/a126109/src/cmd.ts#L131">cmd.ts:131</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -153,17 +163,7 @@
 					<div class="tsd-signature tsd-kind-icon">dom<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">JSDOM</span><span class="tsd-signature-symbol"> =&nbsp;new JSDOM()</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/erikbrinkman/principia-plot/blob/edd0432/src/cmd.ts#L129">cmd.ts:129</a></li>
-						</ul>
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported">
-					<a name="style" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagConst">Const</span> style</h3>
-					<div class="tsd-signature tsd-kind-icon">style<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">HTMLStyleElement</span><span class="tsd-signature-symbol"> =&nbsp;document.createElement(&quot;style&quot;)</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/erikbrinkman/principia-plot/blob/edd0432/src/cmd.ts#L148">cmd.ts:148</a></li>
+							<li>Defined in <a href="https://github.com/erikbrinkman/principia-plot/blob/a126109/src/cmd.ts#L129">cmd.ts:129</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -173,17 +173,7 @@
 					<div class="tsd-signature tsd-kind-icon">style<wbr>Paths<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> =&nbsp;[path.join(path.dirname(__dirname), &quot;resources&quot;, &quot;princ_style.css&quot;),path.join(os.homedir(), &quot;.princ_style.css&quot;),&quot;.princ_style.css&quot;,]</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/erikbrinkman/principia-plot/blob/edd0432/src/cmd.ts#L98">cmd.ts:98</a></li>
-						</ul>
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported">
-					<a name="styletexts" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagConst">Const</span> style<wbr>Texts</h3>
-					<div class="tsd-signature tsd-kind-icon">style<wbr>Texts<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> =&nbsp;[]</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/erikbrinkman/principia-plot/blob/edd0432/src/cmd.ts#L97">cmd.ts:97</a></li>
+							<li>Defined in <a href="https://github.com/erikbrinkman/principia-plot/blob/a126109/src/cmd.ts#L98">cmd.ts:98</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -193,7 +183,7 @@
 					<div class="tsd-signature tsd-kind-icon">svg<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">SVGSVGElement</span><span class="tsd-signature-symbol"> =&nbsp;document.createElementNS(&quot;http://www.w3.org/2000/svg&quot;, &quot;svg&quot;)</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/erikbrinkman/principia-plot/blob/edd0432/src/cmd.ts#L132">cmd.ts:132</a></li>
+							<li>Defined in <a href="https://github.com/erikbrinkman/principia-plot/blob/a126109/src/cmd.ts#L132">cmd.ts:132</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -203,7 +193,7 @@
 					<div class="tsd-signature tsd-kind-icon">window<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">DOMWindow</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/erikbrinkman/principia-plot/blob/edd0432/src/cmd.ts#L130">cmd.ts:130</a></li>
+							<li>Defined in <a href="https://github.com/erikbrinkman/principia-plot/blob/a126109/src/cmd.ts#L130">cmd.ts:130</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -220,7 +210,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/erikbrinkman/principia-plot/blob/edd0432/src/cmd.ts#L77">cmd.ts:77</a></li>
+									<li>Defined in <a href="https://github.com/erikbrinkman/principia-plot/blob/a126109/src/cmd.ts#L78">cmd.ts:78</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -246,7 +236,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/erikbrinkman/principia-plot/blob/edd0432/src/cmd.ts#L54">cmd.ts:54</a></li>
+									<li>Defined in <a href="https://github.com/erikbrinkman/principia-plot/blob/a126109/src/cmd.ts#L55">cmd.ts:55</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -262,6 +252,29 @@
 						</li>
 					</ul>
 				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-external-module tsd-is-not-exported">
+					<a name="loadcss" class="tsd-anchor"></a>
+					<h3>load<wbr>Css</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module tsd-is-not-exported">
+						<li class="tsd-signature tsd-kind-icon">load<wbr>Css<span class="tsd-signature-symbol">(</span>file<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/erikbrinkman/principia-plot/blob/a126109/src/cmd.ts#L136">cmd.ts:136</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>file: <span class="tsd-signature-type">string</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+						</li>
+					</ul>
+				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group tsd-is-not-exported">
 				<h2>Object literals</h2>
@@ -271,7 +284,7 @@
 					<div class="tsd-signature tsd-kind-icon">curves<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/erikbrinkman/principia-plot/blob/edd0432/src/cmd.ts#L18">cmd.ts:18</a></li>
+							<li>Defined in <a href="https://github.com/erikbrinkman/principia-plot/blob/a126109/src/cmd.ts#L19">cmd.ts:19</a></li>
 						</ul>
 					</aside>
 					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal tsd-is-not-exported">
@@ -280,7 +293,7 @@
 						<div class="tsd-signature tsd-kind-icon">basis<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">CurveFactory</span><span class="tsd-signature-symbol"> =&nbsp;d3.curveBasis</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/erikbrinkman/principia-plot/blob/edd0432/src/cmd.ts#L23">cmd.ts:23</a></li>
+								<li>Defined in <a href="https://github.com/erikbrinkman/principia-plot/blob/a126109/src/cmd.ts#L24">cmd.ts:24</a></li>
 							</ul>
 						</aside>
 					</section>
@@ -290,7 +303,7 @@
 						<div class="tsd-signature tsd-kind-icon">cardinal<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">CurveCardinalFactory</span><span class="tsd-signature-symbol"> =&nbsp;d3.curveCardinal</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/erikbrinkman/principia-plot/blob/edd0432/src/cmd.ts#L24">cmd.ts:24</a></li>
+								<li>Defined in <a href="https://github.com/erikbrinkman/principia-plot/blob/a126109/src/cmd.ts#L25">cmd.ts:25</a></li>
 							</ul>
 						</aside>
 					</section>
@@ -300,7 +313,7 @@
 						<div class="tsd-signature tsd-kind-icon">catmull_<wbr>rom<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">CurveCatmullRomFactory</span><span class="tsd-signature-symbol"> =&nbsp;d3.curveCatmullRom</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/erikbrinkman/principia-plot/blob/edd0432/src/cmd.ts#L26">cmd.ts:26</a></li>
+								<li>Defined in <a href="https://github.com/erikbrinkman/principia-plot/blob/a126109/src/cmd.ts#L27">cmd.ts:27</a></li>
 							</ul>
 						</aside>
 					</section>
@@ -310,7 +323,7 @@
 						<div class="tsd-signature tsd-kind-icon">linear<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">CurveFactory</span><span class="tsd-signature-symbol"> =&nbsp;d3.curveLinear</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/erikbrinkman/principia-plot/blob/edd0432/src/cmd.ts#L19">cmd.ts:19</a></li>
+								<li>Defined in <a href="https://github.com/erikbrinkman/principia-plot/blob/a126109/src/cmd.ts#L20">cmd.ts:20</a></li>
 							</ul>
 						</aside>
 					</section>
@@ -320,7 +333,7 @@
 						<div class="tsd-signature tsd-kind-icon">monotone<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">CurveFactory</span><span class="tsd-signature-symbol"> =&nbsp;d3.curveMonotoneX</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/erikbrinkman/principia-plot/blob/edd0432/src/cmd.ts#L25">cmd.ts:25</a></li>
+								<li>Defined in <a href="https://github.com/erikbrinkman/principia-plot/blob/a126109/src/cmd.ts#L26">cmd.ts:26</a></li>
 							</ul>
 						</aside>
 					</section>
@@ -330,7 +343,7 @@
 						<div class="tsd-signature tsd-kind-icon">step<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">CurveFactory</span><span class="tsd-signature-symbol"> =&nbsp;d3.curveStep</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/erikbrinkman/principia-plot/blob/edd0432/src/cmd.ts#L20">cmd.ts:20</a></li>
+								<li>Defined in <a href="https://github.com/erikbrinkman/principia-plot/blob/a126109/src/cmd.ts#L21">cmd.ts:21</a></li>
 							</ul>
 						</aside>
 					</section>
@@ -340,7 +353,7 @@
 						<div class="tsd-signature tsd-kind-icon">step_<wbr>after<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">CurveFactory</span><span class="tsd-signature-symbol"> =&nbsp;d3.curveStepAfter</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/erikbrinkman/principia-plot/blob/edd0432/src/cmd.ts#L22">cmd.ts:22</a></li>
+								<li>Defined in <a href="https://github.com/erikbrinkman/principia-plot/blob/a126109/src/cmd.ts#L23">cmd.ts:23</a></li>
 							</ul>
 						</aside>
 					</section>
@@ -350,7 +363,7 @@
 						<div class="tsd-signature tsd-kind-icon">step_<wbr>before<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">CurveFactory</span><span class="tsd-signature-symbol"> =&nbsp;d3.curveStepBefore</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/erikbrinkman/principia-plot/blob/edd0432/src/cmd.ts#L21">cmd.ts:21</a></li>
+								<li>Defined in <a href="https://github.com/erikbrinkman/principia-plot/blob/a126109/src/cmd.ts#L22">cmd.ts:22</a></li>
 							</ul>
 						</aside>
 					</section>
@@ -361,7 +374,7 @@
 					<div class="tsd-signature tsd-kind-icon">evo<wbr>Datum<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/erikbrinkman/principia-plot/blob/edd0432/src/cmd.ts#L48">cmd.ts:48</a></li>
+							<li>Defined in <a href="https://github.com/erikbrinkman/principia-plot/blob/a126109/src/cmd.ts#L49">cmd.ts:49</a></li>
 						</ul>
 					</aside>
 					<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-object-literal tsd-is-not-exported">
@@ -374,7 +387,7 @@
 							<li class="tsd-description">
 								<aside class="tsd-sources">
 									<ul>
-										<li>Defined in <a href="https://github.com/erikbrinkman/principia-plot/blob/edd0432/src/cmd.ts#L49">cmd.ts:49</a></li>
+										<li>Defined in <a href="https://github.com/erikbrinkman/principia-plot/blob/a126109/src/cmd.ts#L50">cmd.ts:50</a></li>
 									</ul>
 								</aside>
 								<h4 class="tsd-parameters-title">Parameters</h4>
@@ -400,7 +413,7 @@
 							<li class="tsd-description">
 								<aside class="tsd-sources">
 									<ul>
-										<li>Defined in <a href="https://github.com/erikbrinkman/principia-plot/blob/edd0432/src/cmd.ts#L50">cmd.ts:50</a></li>
+										<li>Defined in <a href="https://github.com/erikbrinkman/principia-plot/blob/a126109/src/cmd.ts#L51">cmd.ts:51</a></li>
 									</ul>
 								</aside>
 								<h4 class="tsd-parameters-title">Parameters</h4>
@@ -423,7 +436,7 @@
 					<div class="tsd-signature tsd-kind-icon">funcs<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/erikbrinkman/principia-plot/blob/edd0432/src/cmd.ts#L92">cmd.ts:92</a></li>
+							<li>Defined in <a href="https://github.com/erikbrinkman/principia-plot/blob/a126109/src/cmd.ts#L93">cmd.ts:93</a></li>
 						</ul>
 					</aside>
 					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal tsd-is-not-exported">
@@ -432,7 +445,7 @@
 						<div class="tsd-signature tsd-kind-icon">comparisonz<span class="tsd-signature-symbol">:</span> <a href="_cmd_.html#compz" class="tsd-signature-type">compz</a><span class="tsd-signature-symbol"> =&nbsp;compz</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/erikbrinkman/principia-plot/blob/edd0432/src/cmd.ts#L94">cmd.ts:94</a></li>
+								<li>Defined in <a href="https://github.com/erikbrinkman/principia-plot/blob/a126109/src/cmd.ts#L95">cmd.ts:95</a></li>
 							</ul>
 						</aside>
 					</section>
@@ -442,7 +455,7 @@
 						<div class="tsd-signature tsd-kind-icon">evolution<span class="tsd-signature-symbol">:</span> <a href="_cmd_.html#evo" class="tsd-signature-type">evo</a><span class="tsd-signature-symbol"> =&nbsp;evo</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/erikbrinkman/principia-plot/blob/edd0432/src/cmd.ts#L93">cmd.ts:93</a></li>
+								<li>Defined in <a href="https://github.com/erikbrinkman/principia-plot/blob/a126109/src/cmd.ts#L94">cmd.ts:94</a></li>
 							</ul>
 						</aside>
 					</section>
@@ -453,7 +466,7 @@
 					<div class="tsd-signature tsd-kind-icon">scales<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/erikbrinkman/principia-plot/blob/edd0432/src/cmd.ts#L41">cmd.ts:41</a></li>
+							<li>Defined in <a href="https://github.com/erikbrinkman/principia-plot/blob/a126109/src/cmd.ts#L42">cmd.ts:42</a></li>
 						</ul>
 					</aside>
 					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal tsd-is-not-exported">
@@ -462,7 +475,7 @@
 						<div class="tsd-signature tsd-kind-icon">linear<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">scaleLinear</span><span class="tsd-signature-symbol"> =&nbsp;d3.scaleLinear</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/erikbrinkman/principia-plot/blob/edd0432/src/cmd.ts#L42">cmd.ts:42</a></li>
+								<li>Defined in <a href="https://github.com/erikbrinkman/principia-plot/blob/a126109/src/cmd.ts#L43">cmd.ts:43</a></li>
 							</ul>
 						</aside>
 					</section>
@@ -472,7 +485,7 @@
 						<div class="tsd-signature tsd-kind-icon">log<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">scaleLog</span><span class="tsd-signature-symbol"> =&nbsp;d3.scaleLog</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/erikbrinkman/principia-plot/blob/edd0432/src/cmd.ts#L43">cmd.ts:43</a></li>
+								<li>Defined in <a href="https://github.com/erikbrinkman/principia-plot/blob/a126109/src/cmd.ts#L44">cmd.ts:44</a></li>
 							</ul>
 						</aside>
 					</section>
@@ -482,7 +495,7 @@
 						<div class="tsd-signature tsd-kind-icon">sqrt<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">scaleSqrt</span><span class="tsd-signature-symbol"> =&nbsp;d3.scaleSqrt</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/erikbrinkman/principia-plot/blob/edd0432/src/cmd.ts#L44">cmd.ts:44</a></li>
+								<li>Defined in <a href="https://github.com/erikbrinkman/principia-plot/blob/a126109/src/cmd.ts#L45">cmd.ts:45</a></li>
 							</ul>
 						</aside>
 					</section>
@@ -493,7 +506,7 @@
 					<div class="tsd-signature tsd-kind-icon">symbols<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/erikbrinkman/principia-plot/blob/edd0432/src/cmd.ts#L30">cmd.ts:30</a></li>
+							<li>Defined in <a href="https://github.com/erikbrinkman/principia-plot/blob/a126109/src/cmd.ts#L31">cmd.ts:31</a></li>
 						</ul>
 					</aside>
 					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal tsd-is-not-exported">
@@ -502,7 +515,7 @@
 						<div class="tsd-signature tsd-kind-icon">circle<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">SymbolType</span><span class="tsd-signature-symbol"> =&nbsp;d3.symbolCircle</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/erikbrinkman/principia-plot/blob/edd0432/src/cmd.ts#L31">cmd.ts:31</a></li>
+								<li>Defined in <a href="https://github.com/erikbrinkman/principia-plot/blob/a126109/src/cmd.ts#L32">cmd.ts:32</a></li>
 							</ul>
 						</aside>
 					</section>
@@ -512,7 +525,7 @@
 						<div class="tsd-signature tsd-kind-icon">cross<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">SymbolType</span><span class="tsd-signature-symbol"> =&nbsp;d3.symbolCross</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/erikbrinkman/principia-plot/blob/edd0432/src/cmd.ts#L32">cmd.ts:32</a></li>
+								<li>Defined in <a href="https://github.com/erikbrinkman/principia-plot/blob/a126109/src/cmd.ts#L33">cmd.ts:33</a></li>
 							</ul>
 						</aside>
 					</section>
@@ -522,7 +535,7 @@
 						<div class="tsd-signature tsd-kind-icon">diamond<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">SymbolType</span><span class="tsd-signature-symbol"> =&nbsp;d3.symbolDiamond</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/erikbrinkman/principia-plot/blob/edd0432/src/cmd.ts#L33">cmd.ts:33</a></li>
+								<li>Defined in <a href="https://github.com/erikbrinkman/principia-plot/blob/a126109/src/cmd.ts#L34">cmd.ts:34</a></li>
 							</ul>
 						</aside>
 					</section>
@@ -532,7 +545,7 @@
 						<div class="tsd-signature tsd-kind-icon">square<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">SymbolType</span><span class="tsd-signature-symbol"> =&nbsp;d3.symbolSquare</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/erikbrinkman/principia-plot/blob/edd0432/src/cmd.ts#L34">cmd.ts:34</a></li>
+								<li>Defined in <a href="https://github.com/erikbrinkman/principia-plot/blob/a126109/src/cmd.ts#L35">cmd.ts:35</a></li>
 							</ul>
 						</aside>
 					</section>
@@ -542,7 +555,7 @@
 						<div class="tsd-signature tsd-kind-icon">star<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">SymbolType</span><span class="tsd-signature-symbol"> =&nbsp;d3.symbolStar</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/erikbrinkman/principia-plot/blob/edd0432/src/cmd.ts#L35">cmd.ts:35</a></li>
+								<li>Defined in <a href="https://github.com/erikbrinkman/principia-plot/blob/a126109/src/cmd.ts#L36">cmd.ts:36</a></li>
 							</ul>
 						</aside>
 					</section>
@@ -552,7 +565,7 @@
 						<div class="tsd-signature tsd-kind-icon">triangle<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">SymbolType</span><span class="tsd-signature-symbol"> =&nbsp;d3.symbolTriangle</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/erikbrinkman/principia-plot/blob/edd0432/src/cmd.ts#L36">cmd.ts:36</a></li>
+								<li>Defined in <a href="https://github.com/erikbrinkman/principia-plot/blob/a126109/src/cmd.ts#L37">cmd.ts:37</a></li>
 							</ul>
 						</aside>
 					</section>
@@ -562,7 +575,7 @@
 						<div class="tsd-signature tsd-kind-icon">wye<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">SymbolType</span><span class="tsd-signature-symbol"> =&nbsp;d3.symbolWye</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/erikbrinkman/principia-plot/blob/edd0432/src/cmd.ts#L37">cmd.ts:37</a></li>
+								<li>Defined in <a href="https://github.com/erikbrinkman/principia-plot/blob/a126109/src/cmd.ts#L38">cmd.ts:38</a></li>
 							</ul>
 						</aside>
 					</section>
@@ -607,19 +620,16 @@
 						<a href="_cmd_.html#config" class="tsd-kind-icon">config</a>
 					</li>
 					<li class=" tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported">
+						<a href="_cmd_.html#css" class="tsd-kind-icon">css</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported">
 						<a href="_cmd_.html#document" class="tsd-kind-icon">document</a>
 					</li>
 					<li class=" tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported">
 						<a href="_cmd_.html#dom" class="tsd-kind-icon">dom</a>
 					</li>
 					<li class=" tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported">
-						<a href="_cmd_.html#style" class="tsd-kind-icon">style</a>
-					</li>
-					<li class=" tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported">
 						<a href="_cmd_.html#stylepaths" class="tsd-kind-icon">style<wbr>Paths</a>
-					</li>
-					<li class=" tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported">
-						<a href="_cmd_.html#styletexts" class="tsd-kind-icon">style<wbr>Texts</a>
 					</li>
 					<li class=" tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported">
 						<a href="_cmd_.html#svg" class="tsd-kind-icon">svg</a>
@@ -632,6 +642,9 @@
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-external-module tsd-is-not-exported">
 						<a href="_cmd_.html#evo" class="tsd-kind-icon">evo</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-external-module tsd-is-not-exported">
+						<a href="_cmd_.html#loadcss" class="tsd-kind-icon">load<wbr>Css</a>
 					</li>
 					<li class=" tsd-kind-object-literal tsd-parent-kind-external-module tsd-is-not-exported">
 						<a href="_cmd_.html#curves" class="tsd-kind-icon">curves</a>
