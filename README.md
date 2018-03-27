@@ -8,7 +8,8 @@ A set of classes and a cli for generating plots roughly according to the guiding
 This [video](https://youtu.be/6lm4wJ1qm0w) presents a quick discussion on the types of plots that this tool is meant to capture.
 The command for generating plots is meant to be minimal, and extended mostly through a public css api, including most translations.
 Due to this being entirely without rendering, some features are impossible, i.e. aligning items based off of their size, since their size is inherently unknown.
-All options that require rendering must be used with the [principia render](principia-render) tool.
+If you desire more than basic svg generation, use the base [principia](https://github.com/erikbrinkman/principia) tool that includes various rendering options.
+
 
 Installation and Usage
 ======================
