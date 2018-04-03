@@ -1,9 +1,18 @@
 import { PlotSelect, Scale, Format } from "./aliases";
 
+/** Get a sorted set of uniquely formatted ticks, giving more preference to earlier ticks */
+function uniqueTicks(ticks: number[], format: Format) {
+  const unique: {[t: string]: number} = {};
+  ticks.slice().reverse().forEach((tick) => {
+    unique[format(tick)] = tick;
+  });
+  return Object.keys(unique).map(k => unique[k]).sort();
+}
+
 /** Generate an x axis */
 export function xaxis(group: PlotSelect, x: Scale, ticks: number[], format: Format, label: string) {
   const xgroup = group.append("g").classed("princ--xaxis", true);
-  const sticks = [...new Set(ticks)].sort();
+  const sticks = uniqueTicks(ticks, format);
   xgroup.append("line").classed("princ--tick-line", true)
     .attr("x1", x.range()[0])
     .attr("x2", x.range().reverse()[0]);
@@ -29,7 +38,7 @@ export function xaxis(group: PlotSelect, x: Scale, ticks: number[], format: Form
 /** Generate a y axis */
 export function yaxis(group: PlotSelect, y: Scale, ticks: number[], format: Format, label: string) {
   const ygroup = group.append("g").classed("princ--yaxis", true);
-  const sticks = ticks.slice().sort();
+  const sticks = uniqueTicks(ticks, format);
   ygroup.append("line").classed("princ--tick-line", true)
     .attr("y1", y.range()[0])
     .attr("y2", y.range().reverse()[0]);
