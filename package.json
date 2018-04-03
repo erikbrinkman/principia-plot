@@ -9,7 +9,7 @@
     "watch": "tsc -w",
     "lint": "tslint -c tslint.json -p tsconfig.json",
     "docs": "typedoc --out docs src",
-    "style": "cp resources/base_style.css resources/princ_style.css && jq -rf resources/themes.jq resources/themes.json >> resources/princ_style.css"
+    "style": "{ cat resources/base_style.css && jq -nrf resources/themes.jq; } > resources/princ_style.css"
   },
   "repository": {
     "type": "git",
