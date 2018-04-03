@@ -129,7 +129,8 @@
   classed?: <span class="hljs-built_in">string</span>
 }
 </code></pre><ul>
-					<li>name: The name / label to put next to the bar.</li>
+					<li>name: The name / label to put next to the bar.
+					This can be valid svg xml to allow for extra styling.</li>
 					<li>value: The length of the bar / the value to plot.
 					This should always be positive.</li>
 					<li>classed: A space delimited list of classes to append to this bar.
@@ -175,7 +176,8 @@
   ticks?: <span class="hljs-keyword">number</span>[]
 }
 </code></pre><ul>
-					<li>label: The label to put on the axis.</li>
+					<li>label: The label to put on the axis.
+					This can be valid svg xml to allow for extra styling.</li>
 					<li>format: The format for axis ticks.
 					Must be a valid d3 format string.</li>
 					<li>min: The minimum value to take the axis out to.
@@ -199,7 +201,8 @@
 					<li>data: A list of 2d points to plot.
 					The first numbers, x coordinates, should be sorted and unique.</li>
 					<li>classed: A space separated list of classes to apply to this specific line.</li>
-					<li>label: A string label to place to the right of the line.</li>
+					<li>label: A string label to place to the right of the line.
+					This can be valid svg xml to allow for extra styling.</li>
 					<li>curve: The interpolation function to use between points.
 					These are all of the d3 available curve functions and must be one of: <code>linear</code>, <code>step</code>, <code>step_before</code>, <code>step_after</code>, <code>basis</code>, <code>cardinal</code>, <code>monotone</code>, <code>catmull_rom</code>.</li>
 					<li>point: The type of point to use to delimit where data exists.
@@ -335,6 +338,9 @@
 					</li>
 					<li class=" tsd-kind-external-module">
 						<a href="modules/_evolution_.html">"evolution"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_index_.html">"index"</a>
 					</li>
 				</ul>
 			</nav>
