@@ -32,7 +32,7 @@ export class ValueZ extends CompZData {
       .attr("height", "1em")
       .attr("width", x(this.val));
     valueGroup.append("g").classed(prefix + "name", true)
-      .append("text").text(this.lab);
+      .append("text").html(this.lab);
     valueGroup.append("g").attr("transform", `translate(${x.range().reverse()[0]}, 0)`)
       .append("g").classed(prefix + "num", true)
       .append("text").text((_, i) => format(this.val, i));

@@ -23,7 +23,7 @@ export function xaxis(group: PlotSelect, x: Scale, ticks: number[], format: Form
     .append("g").attr("transform", `translate(${x.range().reduce((a, b) => a + b) / 2}, 0)`)
     .append("g").classed("princ--axis-label", true)
     .append("text")
-    .text(label);
+    .html(label);
 }
 
 /** Generate a y axis */
@@ -49,5 +49,5 @@ export function yaxis(group: PlotSelect, y: Scale, ticks: number[], format: Form
     .append("g").attr("transform", `translate(0, ${y.range().reverse()[0]})`)
     .append("g").classed("princ--axis-label", true)
     .append("text")
-    .text(label);
+    .html(label);
 }

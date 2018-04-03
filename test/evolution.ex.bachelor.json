@@ -187,7 +187,7 @@
     },
     {
       "type": "line",
-      "label": "Computer Science",
+      "label": "<tspan font-style=\"italic\">Computer Science</tspan>",
       "data": [
         [
           1970,

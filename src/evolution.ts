@@ -71,7 +71,7 @@ export abstract class EvolutionItem extends BasePlotItem {
       .append("text")
       .attr("x", x.range().reverse()[0])
       .attr("y", y(this.target()))
-      .text(this.label());
+      .html(this.label());
     return newGroup;
   }
 }

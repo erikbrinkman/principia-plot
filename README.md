@@ -102,6 +102,7 @@ Each element of data is:
 ```
 
 - name: The name / label to put next to the bar.
+  This can be valid svg xml to allow for extra styling.
 - value: The length of the bar / the value to plot.
   This should always be positive.
 - classed: A space delimited list of classes to append to this bar.
@@ -159,6 +160,7 @@ Each axis has the following structure:
 ```
 
 - label: The label to put on the axis.
+  This can be valid svg xml to allow for extra styling.
 - format: The format for axis ticks.
   Must be a valid d3 format string.
 - min: The minimum value to take the axis out to.
@@ -185,6 +187,7 @@ Lines have the following structure:
   The first numbers, x coordinates, should be sorted and unique.
 - classed: A space separated list of classes to apply to this specific line.
 - label: A string label to place to the right of the line.
+  This can be valid svg xml to allow for extra styling.
 - curve: The interpolation function to use between points.
   These are all of the d3 available curve functions and must be one of: `linear`, `step`, `step_before`, `step_after`, `basis`, `cardinal`, `monotone`, `catmull_rom`.
 - point: The type of point to use to delimit where data exists.
