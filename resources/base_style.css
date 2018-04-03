@@ -102,6 +102,7 @@ svg {
   stroke: black;
   stroke-width: 2px;
   stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
 .princ--point {
