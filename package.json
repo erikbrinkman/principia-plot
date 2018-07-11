@@ -1,6 +1,6 @@
 {
   "name": "principia-plot",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "description": "A library for making plots based off of principae",
   "bin": "bin/cmd.js",
   "main": "lib/index.js",
@@ -27,20 +27,20 @@
   "homepage": "https://github.com/erikbrinkman/principia-plot#readme",
   "dependencies": {
     "clean-css": "^4.1.11",
-    "d3": "^4.12.0",
+    "d3": "^5.5.0",
     "jsdom": "^11.11.0",
     "yargs": "^11.1.0"
   },
   "devDependencies": {
     "@types/clean-css": "^3.4.30",
-    "@types/d3": "^4.13.0",
-    "@types/jsdom": "^11.0.6",
-    "@types/node": "^8.10.21",
-    "@types/yargs": "^10.0.2",
-    "jest": "^21.2.1",
-    "ts-jest": "^21.2.4",
+    "@types/d3": "^5.0.0",
+    "@types/jsdom": "11.0.4",
+    "@types/node": "^10.1.4",
+    "@types/yargs": "^11.0.0",
+    "jest": "^23.1.0",
+    "ts-jest": "^22.4.6",
     "tslint": "^5.10.0",
-    "typedoc": "^0.10.0",
+    "typedoc": "^0.11.1",
     "typescript": "^2.9.2"
   },
   "jest": {
