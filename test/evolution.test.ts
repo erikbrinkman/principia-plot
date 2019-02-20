@@ -1,10 +1,10 @@
-import {} from "jest";
-import * as assert from "assert";
+import "jest";
+import "assert";
 import * as cp from "child_process";
 import * as fs from "fs";
 
 describe("Evolution Line Plot", () => {
-  const base = fs.readFileSync("test/evolution.ex.bachelor.json");
+  const base = fs.readFileSync("test/evolution.ex.bachelor.json", "utf-8");
 
   it("generates the default svg", () => {
     cp.execFileSync(
@@ -64,7 +64,7 @@ describe("Evolution Line Plot", () => {
 });
 
 describe("Evolution Span Plot", () => {
-  const base = fs.readFileSync("test/evolution.ex.heart_rate.json");
+  const base = fs.readFileSync("test/evolution.ex.heart_rate.json", "utf-8");
 
   it("generates the default svg", () => {
     cp.execSync("./bin/cmd.js -o test/evolution.ex.heart_rate.svg", {

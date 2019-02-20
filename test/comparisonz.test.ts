@@ -1,10 +1,10 @@
-import {} from "jest";
-import * as assert from "assert";
+import "jest";
+import "assert";
 import * as cp from "child_process";
 import * as fs from "fs";
 
 describe("Comparison Zero Plot", () => {
-  const base = fs.readFileSync("test/comparisonz.ex.bachelor.json");
+  const base = fs.readFileSync("test/comparisonz.ex.bachelor.json", "utf-8");
 
   it("generates the default svg", () => {
     cp.execFileSync(

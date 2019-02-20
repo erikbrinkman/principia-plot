@@ -35,14 +35,15 @@
   "devDependencies": {
     "@types/clean-css": "^3.4.30",
     "@types/d3": "^5.0.0",
+    "@types/jest": "^24.0.6",
     "@types/jsdom": "11.0.4",
     "@types/node": "^10.1.4",
     "@types/yargs": "^11.0.0",
-    "jest": "^23.1.0",
     "prettier": "^1.16.4",
-    "ts-jest": "^22.4.6",
+    "jest": "^24.1.0",
+    "ts-jest": "^24.0.0",
     "tslint": "^5.10.0",
-    "typedoc": "^0.11.1",
+    "typedoc": "^0.14.2",
     "typescript": "^2.9.2"
   },
   "jest": {
@@ -50,9 +51,7 @@
       "ts",
       "js"
     ],
-    "transform": {
-      "^.+\\.(ts)$": "./node_modules/ts-jest/preprocessor.js"
-    },
+    "preset": "ts-jest",
     "testMatch": [
       "**/test/**/*.test.(ts|js)"
     ],
