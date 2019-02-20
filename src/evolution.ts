@@ -16,7 +16,10 @@ export abstract class EvolutionItem extends BasePlotItem {
     super();
     this.lab = "";
     this.cve = d3.curveCatmullRom;
-    this.pnt = d3.symbol().size(1).type(d3.symbolCircle);
+    this.pnt = d3
+      .symbol()
+      .size(1)
+      .type(d3.symbolCircle);
   }
 
   /** Get or set the label for the data item */
@@ -64,10 +67,15 @@ export abstract class EvolutionItem extends BasePlotItem {
 
   /** Plot the data item */
   plot(group: PlotSelect, x: Scale, y: Scale): PlotSelect {
-    const newGroup = this.plotSetup(group)
-      .classed(prefix + this.name() + "-item", true);
-    newGroup.append("g").classed(prefix + "labels", true)
-      .append("g").classed(prefix + "label", true)
+    const newGroup = this.plotSetup(group).classed(
+      prefix + this.name() + "-item",
+      true
+    );
+    newGroup
+      .append("g")
+      .classed(prefix + "labels", true)
+      .append("g")
+      .classed(prefix + "label", true)
       .append("text")
       .attr("x", x.range().reverse()[0])
       .attr("y", y(this.target()))
@@ -96,21 +104,30 @@ export class Line extends EvolutionItem {
   plot(group: PlotSelect, x: Scale, y: Scale): PlotSelect {
     const lineGroup = super.plot(group, x, y);
     // TODO Truncate data if it goes outside of bounds
-    const path = d3.line()
+    const path = d3
+      .line()
       .x(d => x(d[0]))
       .y(d => y(d[1]))
       .curve(this.cve)(this.data);
     if (path === null) {
       throw new Error("path was null");
     }
-    lineGroup.append("g").classed(prefix + this.name(), true)
-      .append("path").attr("d", path);
-    lineGroup.append("g")
-      .selectAll("g").data(this.data).enter()
+    lineGroup
+      .append("g")
+      .classed(prefix + this.name(), true)
+      .append("path")
+      .attr("d", path);
+    lineGroup
+      .append("g")
+      .selectAll("g")
+      .data(this.data)
+      .enter()
       .append("g")
       .attr("transform", ([px, py]: Point) => `translate(${x(px)}, ${y(py)})`)
-      .append("g").classed(prefix + "point", true)
-      .append("path").attr("d", this.pnt);
+      .append("g")
+      .classed(prefix + "point", true)
+      .append("path")
+      .attr("d", this.pnt);
     return lineGroup;
   }
 }
@@ -136,7 +153,8 @@ export class Span extends EvolutionItem {
   plot(group: PlotSelect, x: Scale, y: Scale): PlotSelect {
     const spanGroup = super.plot(group, x, y);
     // TODO Truncate data if it goes outside of bounds?
-    const path = d3.area<SPoint>()
+    const path = d3
+      .area<SPoint>()
       .x((d: SPoint) => x(d[0]))
       .y0((d: SPoint) => y(d[1]))
       .y1((d: SPoint) => y(d[2]))
@@ -144,16 +162,25 @@ export class Span extends EvolutionItem {
     if (path === null) {
       throw new Error("path was null");
     }
-    spanGroup.append("g").classed(prefix + this.name(), true)
-      .append("path").attr("d", path);
-    const pointData = this.data.map(([x, y, ]) => [x, y] as Point).concat(
-      this.data.map(([x, , y]) => [x, y] as Point));
-    spanGroup.append("g")
-      .selectAll("g").data(pointData).enter()
+    spanGroup
+      .append("g")
+      .classed(prefix + this.name(), true)
+      .append("path")
+      .attr("d", path);
+    const pointData = this.data
+      .map(([x, y]) => [x, y] as Point)
+      .concat(this.data.map(([x, , y]) => [x, y] as Point));
+    spanGroup
+      .append("g")
+      .selectAll("g")
+      .data(pointData)
+      .enter()
       .append("g")
       .attr("transform", ([px, py]: Point) => `translate(${x(px)}, ${y(py)})`)
-      .append("g").classed(prefix + "point", true)
-      .append("path").attr("d", this.pnt);
+      .append("g")
+      .classed(prefix + "point", true)
+      .append("path")
+      .attr("d", this.pnt);
     return spanGroup;
   }
 }
@@ -337,7 +364,12 @@ export class Evolution extends BasePlot {
   }
 
   /** Set properties of the x axis */
-  xaxis({label = this.xLabel, ticks = this.xTicks, format = this.xTickFormat, scale = this.xScale}): this {
+  xaxis({
+    label = this.xLabel,
+    ticks = this.xTicks,
+    format = this.xTickFormat,
+    scale = this.xScale
+  }): this {
     this.xLabel = label;
     this.xTicks = ticks;
     this.xTickFormat = format;
@@ -346,7 +378,12 @@ export class Evolution extends BasePlot {
   }
 
   /** Set properties of the y axis */
-  yaxis({label = this.yLabel, ticks = this.yTicks, format = this.yTickFormat, scale = this.yScale}): this {
+  yaxis({
+    label = this.yLabel,
+    ticks = this.yTicks,
+    format = this.yTickFormat,
+    scale = this.yScale
+  }): this {
     this.yLabel = label;
     this.yTicks = ticks;
     this.yTickFormat = format;
@@ -366,8 +403,20 @@ export class Evolution extends BasePlot {
 
     // axes
     const axisGroup = svg.append("g").classed(prefix + "axis", true);
-    axes.xaxis(axisGroup.append("g").attr("transform", `translate(0, ${this.hght})`), x, this.xbounds().concat(this.xTicks), this.xTickFormat, this.xLabel);
-    axes.yaxis(axisGroup.append("g"), y, this.ybounds().concat(this.yTicks), this.yTickFormat, this.yLabel);
+    axes.xaxis(
+      axisGroup.append("g").attr("transform", `translate(0, ${this.hght})`),
+      x,
+      this.xbounds().concat(this.xTicks),
+      this.xTickFormat,
+      this.xLabel
+    );
+    axes.yaxis(
+      axisGroup.append("g"),
+      y,
+      this.ybounds().concat(this.yTicks),
+      this.yTickFormat,
+      this.yLabel
+    );
 
     // data
     const dataGroup = svg.append("g");

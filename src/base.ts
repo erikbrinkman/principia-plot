@@ -24,7 +24,8 @@ export abstract class BasePlotItem {
 
   /** Plot the data item */
   protected plotSetup(group: PlotSelect): PlotSelect {
-    return group.append("g")
+    return group
+      .append("g")
       .classed(prefix + "item", true)
       .classed(this.cls, true);
   }
@@ -54,7 +55,9 @@ export abstract class BasePlot {
 
   /** Plot an evolution */
   plot(svgElement: SVGSVGElement): PlotSelect {
-    return d3.select(svgElement).append("g")
+    return d3
+      .select(svgElement)
+      .append("g")
       .classed(prefix + "root", true)
       .classed(prefix + this.name(), true)
       .classed(this.cls, true);

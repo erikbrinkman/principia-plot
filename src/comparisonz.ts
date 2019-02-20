@@ -26,16 +26,25 @@ export class ValueZ extends CompZData {
     const valueGroup = super.plot(group, x, format);
     // TODO In d3 style this should probably join on this.val, then width will
     // be a function of d, and so will the text
-    valueGroup.append("g").classed(prefix + "value", true)
+    valueGroup
+      .append("g")
+      .classed(prefix + "value", true)
       .append("rect")
       .attr("y", "-0.5em")
       .attr("height", "1em")
       .attr("width", x(this.val));
-    valueGroup.append("g").classed(prefix + "name", true)
-      .append("text").html(this.lab);
-    valueGroup.append("g").attr("transform", `translate(${x.range().reverse()[0]}, 0)`)
-      .append("g").classed(prefix + "num", true)
-      .append("text").text((_, i) => format(this.val, i));
+    valueGroup
+      .append("g")
+      .classed(prefix + "name", true)
+      .append("text")
+      .html(this.lab);
+    valueGroup
+      .append("g")
+      .attr("transform", `translate(${x.range().reverse()[0]}, 0)`)
+      .append("g")
+      .classed(prefix + "num", true)
+      .append("text")
+      .text((_, i) => format(this.val, i));
     return valueGroup;
   }
 }
@@ -105,7 +114,11 @@ export class ComparisonZ extends BasePlot {
   }
 
   /** Set properties of the axis */
-  axis({label = this.label, ticks = this.ticks, format = this.axisFormat}): this {
+  axis({
+    label = this.label,
+    ticks = this.ticks,
+    format = this.axisFormat
+  }): this {
     this.label = label;
     this.ticks = ticks;
     this.axisFormat = format;
@@ -123,13 +136,24 @@ export class ComparisonZ extends BasePlot {
 
     // axes
     const axisGroup = svg
-      .append("g").classed(prefix + "axis", true)
-      .append("g").attr("style", `transform: translateY(${this.data.length - 1}.5em);`);
-    axes.xaxis(axisGroup, x, [0, this.maxVal].concat(this.ticks), this.axisFormat, this.label);
+      .append("g")
+      .classed(prefix + "axis", true)
+      .append("g")
+      .attr("style", `transform: translateY(${this.data.length - 1}.5em);`);
+    axes.xaxis(
+      axisGroup,
+      x,
+      [0, this.maxVal].concat(this.ticks),
+      this.axisFormat,
+      this.label
+    );
 
     const dataGroup = svg.append("g");
-    this.data.forEach((datum, i) => datum.plot(dataGroup, x, this.format)
-        .attr("style", `transform: translateY(${i}em);`));
+    this.data.forEach((datum, i) =>
+      datum
+        .plot(dataGroup, x, this.format)
+        .attr("style", `transform: translateY(${i}em);`)
+    );
     return svg;
   }
 }

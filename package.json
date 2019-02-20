@@ -9,6 +9,7 @@
     "build": "tsc",
     "watch": "tsc -w",
     "lint": "tslint -c tslint.json -p tsconfig.json",
+    "format": "prettier --write 'src/*.ts' 'test/*.ts'",
     "docs": "typedoc --out docs src",
     "style": "{ cat resources/base_style.css && jq -nrf resources/themes.jq; } > resources/princ_style.css"
   },
@@ -38,6 +39,7 @@
     "@types/node": "^10.1.4",
     "@types/yargs": "^11.0.0",
     "jest": "^23.1.0",
+    "prettier": "^1.16.4",
     "ts-jest": "^22.4.6",
     "tslint": "^5.10.0",
     "typedoc": "^0.11.1",
