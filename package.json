@@ -6,12 +6,11 @@
   "main": "lib/index.js",
   "scripts": {
     "test": "jest --forceExit --detectOpenHandles",
-    "build": "tsc",
+    "build": "tsc && node resources/gen_style.js > resources/princ_style.css",
     "watch": "tsc -w",
     "lint": "tslint -c tslint.json -p tsconfig.json",
-    "format": "prettier --write 'src/*.ts' 'test/*.ts'",
-    "docs": "typedoc --out docs src",
-    "style": "{ cat resources/base_style.css && jq -nrf resources/themes.jq; } > resources/princ_style.css"
+    "format": "prettier --write resources/gen_style.js 'src/*.ts' 'test/*.ts'",
+    "docs": "typedoc --out docs src"
   },
   "repository": {
     "type": "git",

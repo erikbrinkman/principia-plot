@@ -1,0 +1,317 @@
+#!/usr/bin/env node
+
+function appendTheme(name, colors, output) {
+  colors.forEach((color, i) => {
+    const base = `.princ--${name} .princ--item:nth-child(${colors.length}n+${i +
+      1})`;
+    output.write(`${base} .princ--line { stroke: ${color}; }\n`);
+    output.write(
+      `${base} .princ--point, ${base} .princ--space, ${base} .princ--value, ${base} .princ--label { fill: ${color}; }\n`
+    );
+  });
+}
+
+function appendColor(name, color, output) {
+  const base = `.princ--item.princ--${name}:nth-child(n)`;
+  output.write(`${base} .princ--line { stroke: ${color}; }\n`);
+  output.write(
+    `${base} .princ--point, ${base} .princ--space, ${base} .princ--value, ${base} .princ--label { fill: ${color}; }\n`
+  );
+}
+
+const themes = {
+  mathematica: [
+    "#5e81b5",
+    "#e19c24",
+    "#8fb032",
+    "#eb6235",
+    "#8778b3",
+    "#c56e1a",
+    "#5d9ec7",
+    "#ffbf00",
+    "#a5609d",
+    "#929600",
+    "#e95536",
+    "#6685d9",
+    "#f89f13",
+    "#bc5b80",
+    "#47b66d"
+  ],
+  accent: [
+    "#7fc97f",
+    "#beaed4",
+    "#fdc086",
+    "#ffff99",
+    "#386cb0",
+    "#f0027f",
+    "#bf5b17",
+    "#666666"
+  ],
+  dark2: [
+    "#1b9e77",
+    "#d95f02",
+    "#7570b3",
+    "#e7298a",
+    "#66a61e",
+    "#e6ab02",
+    "#a6761d",
+    "#666666"
+  ],
+  paired: [
+    "#a6cee3",
+    "#1f78b4",
+    "#b2df8a",
+    "#33a02c",
+    "#fb9a99",
+    "#e31a1c",
+    "#fdbf6f",
+    "#ff7f00",
+    "#cab2d6",
+    "#6a3d9a",
+    "#ffff99",
+    "#b15928"
+  ],
+  pastel1: [
+    "#fbb4ae",
+    "#b3cde3",
+    "#ccebc5",
+    "#decbe4",
+    "#fed9a6",
+    "#ffffcc",
+    "#e5d8bd",
+    "#fddaec",
+    "#f2f2f2"
+  ],
+  pastel2: [
+    "#b3e2cd",
+    "#fdcdac",
+    "#cbd5e8",
+    "#f4cae4",
+    "#e6f5c9",
+    "#fff2ae",
+    "#f1e2cc",
+    "#cccccc"
+  ],
+  set1: [
+    "#e41a1c",
+    "#377eb8",
+    "#4daf4a",
+    "#984ea3",
+    "#ff7f00",
+    "#ffff33",
+    "#a65628",
+    "#f781bf",
+    "#999999"
+  ],
+  set2: [
+    "#66c2a5",
+    "#fc8d62",
+    "#8da0cb",
+    "#e78ac3",
+    "#a6d854",
+    "#ffd92f",
+    "#e5c494",
+    "#b3b3b3"
+  ],
+  set3: [
+    "#8dd3c7",
+    "#ffffb3",
+    "#bebada",
+    "#fb8072",
+    "#80b1d3",
+    "#fdb462",
+    "#b3de69",
+    "#fccde5",
+    "#d9d9d9",
+    "#bc80bd",
+    "#ccebc5",
+    "#ffed6f"
+  ],
+  solarized: [
+    "#6c71c4",
+    "#d33682",
+    "#dc322f",
+    "#cb4b16",
+    "#859900",
+    "#2aa198",
+    "#268bd2",
+    "#b58900"
+  ]
+};
+const colors = {
+  "umich-blue": "#00274c",
+  "umich-maize": "#ffcb05",
+  "tappan-red": "#B1261D",
+  "wave-field-green": "#B7B210",
+  "arboretum-blue": "#196CB5",
+  "ross-school-orange": "#E97E23",
+  "taubman-teal": "#0FAFAF",
+  "ann-arbor-amethyst": "#6E2E8D",
+  "jeanluc-red": "#EE7773",
+  "jeanluc-yellow": "#F5BF70",
+  "jeanluc-grey": "#828282",
+  "jeanluc-gray": "#828282"
+};
+const baseStyle = `
+svg {
+  font-family: sans-serif;
+  font-size: 14px;
+}
+
+/**************
+ * Axes style *
+ **************/
+
+.princ--tick-labels {
+  font-size: 0.75em;
+}
+
+.princ--tick-line, .princ--tick {
+  stroke: #838383;
+}
+
+.princ--tick-line {
+  stroke-linecap: square;
+}
+
+.princ--tick-label, .princ--axis-label {
+  fill: #838383;
+}
+
+.princ--yaxis {
+  transform: translateX(-5px);
+}
+
+.princ--yaxis .princ--tick-labels {
+  transform: translateX(-2px);
+  dominant-baseline: central;
+  text-anchor: end;
+}
+
+.princ--yaxis .princ--tick {
+  transform: scaleX(2);
+}
+
+.princ--yaxis .princ--axis-label {
+  transform: translateY(-3px);
+}
+
+.princ--xaxis {
+  transform: translateY(5px);
+}
+
+.princ--xaxis .princ--axis-label {
+  text-anchor: middle;
+  dominant-baseline: hanging;
+  transform: translateY(14px);
+}
+
+.princ--xaxis .princ--tick {
+  transform: scaleY(2);
+}
+
+.princ--xaxis .princ--tick-labels {
+  text-anchor: middle;
+  dominant-baseline: hanging;
+  transform: translateY(2px);
+}
+
+/*******************
+ * Zero Comparison *
+ *******************/
+
+.princ--comparisonz .princ--axis {
+  display: none;
+}
+
+.princ--value {
+  font-size: 0.7em;
+}
+
+.princ--name {
+  dominant-baseline: central;
+  font-size: 0.7em;
+  transform: translateX(-50px);
+}
+
+.princ--num {
+  dominant-baseline: central;
+  text-anchor: end;
+  font-size: 0.7em;
+  transform: translateX(20px);
+  fill: #838383;
+}
+
+/*************
+ * Evolution *
+ *************/
+
+.princ--span {
+  stroke: none;
+  fill: black;
+  fill-opacity: 0.2;
+}
+
+.princ--line {
+  fill: none;
+  stroke: black;
+  stroke-width: 2px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.princ--point {
+  fill: black;
+  stroke: white;
+  stroke-width: 0.4;
+  transform: scale(2.5);
+}
+
+.princ--span-item .princ--point {
+  display: none;
+}
+
+.princ--labels {
+  transform: translateX(3px);
+  dominant-baseline: central;
+}
+
+/* Line styles */
+.princ--dash .princ--line {
+  stroke-dasharray: 5, 9;
+}
+
+.princ--dot .princ--line {
+  stroke-dasharray: 0, 4;
+}
+
+.princ--dash-dot .princ--line {
+  stroke-dasharray: 5, 9, 0, 9;
+}
+`;
+
+// Write everything
+process.stdout.write(baseStyle);
+
+process.stdout.write(`
+/**********
+ * Themes *
+ **********/
+// This section is autogenerated
+`);
+Object.entries(themes).forEach(([name, colors]) => {
+  appendTheme(name, colors, process.stdout);
+});
+Object.entries(colors).forEach(([name, color]) => {
+  appendTheme(name, [color], process.stdout);
+});
+
+process.stdout.write(`
+/**********
+ * Colors *
+ **********/
+// This section is autogenerated
+`);
+Object.entries(colors).forEach(([name, color]) => {
+  appendColor(name, color, process.stdout);
+});
