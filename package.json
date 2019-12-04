@@ -29,7 +29,7 @@
     "clean-css": "^4.1.11",
     "d3": "^5.7.0",
     "jsdom": "^11.11.0",
-    "yargs": "^11.1.0"
+    "yargs": "^15.0.2"
   },
   "devDependencies": {
     "@types/clean-css": "^3.4.30",
