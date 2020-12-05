@@ -5,21 +5,19 @@ import { PlotSelect, Scale, Format } from "./aliases";
 
 export type Point = [number, number];
 export type SPoint = [number, number, number];
+type Symb = d3.Symbol<unknown, unknown>;
 
 /** The base data type for adding data to an evolution plot. */
 export abstract class EvolutionItem extends BasePlotItem {
   protected lab: string;
   protected cve: d3.CurveFactory;
-  protected pnt: d3.Symbol<any, any>;
+  protected pnt: Symb;
 
   constructor() {
     super();
     this.lab = "";
     this.cve = d3.curveCatmullRom;
-    this.pnt = d3
-      .symbol()
-      .size(1)
-      .type(d3.symbolCircle);
+    this.pnt = d3.symbol().size(1).type(d3.symbolCircle);
   }
 
   /** Get or set the label for the data item */
@@ -48,9 +46,9 @@ export abstract class EvolutionItem extends BasePlotItem {
   }
 
   /** Get or set the point for the data item */
-  point(): d3.Symbol<any, any>;
-  point(pnt: d3.Symbol<any, any>): this;
-  point(pnt?: d3.Symbol<any, any>): d3.Symbol<any, any> | this {
+  point(): Symb;
+  point(pnt: Symb): this;
+  point(pnt?: Symb): Symb | this {
     if (pnt === undefined) {
       return this.pnt;
     } else {
@@ -106,8 +104,8 @@ export class Line extends EvolutionItem {
     // TODO Truncate data if it goes outside of bounds
     const path = d3
       .line()
-      .x(d => x(d[0]))
-      .y(d => y(d[1]))
+      .x((d) => x(d[0]))
+      .y((d) => y(d[1]))
       .curve(this.cve)(this.data);
     if (path === null) {
       throw new Error("path was null");
@@ -368,7 +366,12 @@ export class Evolution extends BasePlot {
     label = this.xLabel,
     ticks = this.xTicks,
     format = this.xTickFormat,
-    scale = this.xScale
+    scale = this.xScale,
+  }: {
+    label?: string;
+    ticks?: number[];
+    format?: Format;
+    scale?: Scale;
   }): this {
     this.xLabel = label;
     this.xTicks = ticks;
@@ -382,7 +385,12 @@ export class Evolution extends BasePlot {
     label = this.yLabel,
     ticks = this.yTicks,
     format = this.yTickFormat,
-    scale = this.yScale
+    scale = this.yScale,
+  }: {
+    label?: string;
+    ticks?: number[];
+    format?: Format;
+    scale?: Scale;
   }): this {
     this.yLabel = label;
     this.yTicks = ticks;
@@ -420,7 +428,7 @@ export class Evolution extends BasePlot {
 
     // data
     const dataGroup = svg.append("g");
-    this.data.forEach(datum => datum.plot(dataGroup, x, y));
+    this.data.forEach((datum) => datum.plot(dataGroup, x, y));
     return svg;
   }
 }

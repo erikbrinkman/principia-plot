@@ -1,5 +1,5 @@
 // A selection of the plot
-export type PlotSelect = d3.Selection<SVGGElement, any, any, any>;
+export type PlotSelect = d3.Selection<SVGGElement, unknown, null, undefined>;
 // A numeric scale
 export type Scale = d3.ScaleContinuousNumeric<number, number>;
 // A formatter

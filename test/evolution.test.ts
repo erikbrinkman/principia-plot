@@ -1,5 +1,3 @@
-import "jest";
-import "assert";
 import * as cp from "child_process";
 import * as fs from "fs";
 
@@ -13,13 +11,14 @@ describe("Evolution Line Plot", () => {
         "-c",
         "test/evolution.ex.bachelor.css",
         "-o",
-        "test/evolution.ex.bachelor.svg"
+        "test/evolution.ex.bachelor.svg",
       ],
       {
         input: base,
-        encoding: "utf-8"
+        encoding: "utf-8",
       }
     );
+    expect(fs.existsSync("test/evolution.ex.bachelor.svg")).toBeTruthy();
   });
 
   it("works with different themes", () => {
@@ -31,16 +30,17 @@ describe("Evolution Line Plot", () => {
         "-c",
         "test/evolution.ex.bachelor.css",
         "-o",
-        "test/evolution.ex.bachelor.theme.svg"
+        "test/evolution.ex.bachelor.theme.svg",
       ],
       {
         input: JSON.stringify(spec),
-        encoding: "utf-8"
+        encoding: "utf-8",
       }
     );
+    expect(fs.existsSync("test/evolution.ex.bachelor.theme.svg")).toBeTruthy();
   });
 
-  it("it allows manual color and line style changes", () => {
+  it("allows manual color and line style changes", () => {
     const spec = JSON.parse(base);
     spec.data[0].classed = "princ--umich-blue";
     spec.data[1].classed = "princ--ann-arbor-amethyst";
@@ -53,13 +53,14 @@ describe("Evolution Line Plot", () => {
         "-c",
         "test/evolution.ex.bachelor.css",
         "-o",
-        "test/evolution.ex.bachelor.style.svg"
+        "test/evolution.ex.bachelor.style.svg",
       ],
       {
         input: JSON.stringify(spec),
-        encoding: "utf-8"
+        encoding: "utf-8",
       }
     );
+    expect(fs.existsSync("test/evolution.ex.bachelor.style.svg")).toBeTruthy();
   });
 });
 
@@ -69,8 +70,9 @@ describe("Evolution Span Plot", () => {
   it("generates the default svg", () => {
     cp.execSync("./bin/cmd.js -o test/evolution.ex.heart_rate.svg", {
       input: base,
-      encoding: "utf-8"
+      encoding: "utf-8",
     });
+    expect(fs.existsSync("test/evolution.ex.heart_rate.svg")).toBeTruthy();
   });
 
   it("can be themed", () => {
@@ -78,8 +80,11 @@ describe("Evolution Span Plot", () => {
     spec.classed = "princ--solarized";
     cp.execSync("./bin/cmd.js -o test/evolution.ex.heart_rate.theme.svg", {
       input: JSON.stringify(spec),
-      encoding: "utf-8"
+      encoding: "utf-8",
     });
+    expect(
+      fs.existsSync("test/evolution.ex.heart_rate.theme.svg")
+    ).toBeTruthy();
   });
 
   it("can be styled", () => {
@@ -88,7 +93,10 @@ describe("Evolution Span Plot", () => {
     spec.data[1].classed = "princ--umich-blue";
     cp.execSync("./bin/cmd.js -o test/evolution.ex.heart_rate.style.svg", {
       input: JSON.stringify(spec),
-      encoding: "utf-8"
+      encoding: "utf-8",
     });
+    expect(
+      fs.existsSync("test/evolution.ex.heart_rate.style.svg")
+    ).toBeTruthy();
   });
 });

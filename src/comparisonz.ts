@@ -6,7 +6,9 @@ import { PlotSelect, Scale, Format } from "./aliases";
 /** The base comparison data */
 export abstract class CompZData extends BasePlotItem {
   /** Plot a comparison item */
-  plot(group: PlotSelect, _x: Scale, _format: Format): PlotSelect {
+  plot(group: PlotSelect, x: Scale, format: Format): PlotSelect {
+    void x;
+    void format;
     return this.plotSetup(group);
   }
 }
@@ -117,7 +119,11 @@ export class ComparisonZ extends BasePlot {
   axis({
     label = this.label,
     ticks = this.ticks,
-    format = this.axisFormat
+    format = this.axisFormat,
+  }: {
+    label?: string;
+    ticks?: number[];
+    format?: Format;
   }): this {
     this.label = label;
     this.ticks = ticks;

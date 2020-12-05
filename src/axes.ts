@@ -6,11 +6,11 @@ function uniqueTicks(ticks: number[], format: Format) {
   ticks
     .slice()
     .reverse()
-    .forEach(tick => {
+    .forEach((tick) => {
       unique[format(tick)] = tick;
     });
   return Object.keys(unique)
-    .map(k => unique[k])
+    .map((k) => unique[k])
     .sort();
 }
 
@@ -21,7 +21,7 @@ export function xaxis(
   ticks: number[],
   format: Format,
   label: string
-) {
+): void {
   const xgroup = group.append("g").classed("princ--xaxis", true);
   const sticks = uniqueTicks(ticks, format);
   xgroup
@@ -38,7 +38,7 @@ export function xaxis(
     .append("g")
     .classed("princ--tick", true)
     .append("g")
-    .attr("transform", t => `translate(${x(t)}, 0)`)
+    .attr("transform", (t) => `translate(${x(t)}, 0)`)
     .append("line")
     .attr("y2", -1);
   xgroup
@@ -50,9 +50,9 @@ export function xaxis(
     .append("g")
     .classed("princ--tick-label", true)
     .append("g")
-    .attr("transform", t => `translate(${x(t)}, 0)`)
+    .attr("transform", (t) => `translate(${x(t)}, 0)`)
     .append("text")
-    .text(t => format(t));
+    .text((t) => format(t));
   xgroup
     .append("g")
     .attr("transform", `translate(${x.range().reduce((a, b) => a + b) / 2}, 0)`)
@@ -69,7 +69,7 @@ export function yaxis(
   ticks: number[],
   format: Format,
   label: string
-) {
+): void {
   const ygroup = group.append("g").classed("princ--yaxis", true);
   const sticks = uniqueTicks(ticks, format);
   ygroup
@@ -86,7 +86,7 @@ export function yaxis(
     .append("g")
     .classed("princ--tick", true)
     .append("g")
-    .attr("transform", t => `translate(0, ${y(t)})`)
+    .attr("transform", (t) => `translate(0, ${y(t)})`)
     .append("line")
     .attr("x2", 1);
   ygroup
@@ -98,9 +98,9 @@ export function yaxis(
     .append("g")
     .classed("princ--tick-label", true)
     .append("g")
-    .attr("transform", t => `translate(0, ${y(t)})`)
+    .attr("transform", (t) => `translate(0, ${y(t)})`)
     .append("text")
-    .text(t => format(t));
+    .text((t) => format(t));
   ygroup
     .append("g")
     .attr("transform", `translate(0, ${y.range().reverse()[0]})`)

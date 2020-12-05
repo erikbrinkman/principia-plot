@@ -2,8 +2,9 @@
 
 function appendTheme(name, colors, output) {
   colors.forEach((color, i) => {
-    const base = `.princ--${name} .princ--item:nth-child(${colors.length}n+${i +
-      1})`;
+    const base = `.princ--${name} .princ--item:nth-child(${colors.length}n+${
+      i + 1
+    })`;
     output.write(`${base} .princ--line { stroke: ${color}; }\n`);
     output.write(
       `${base} .princ--point, ${base} .princ--space, ${base} .princ--value, ${base} .princ--label { fill: ${color}; }\n`
@@ -35,7 +36,7 @@ const themes = {
     "#6685d9",
     "#f89f13",
     "#bc5b80",
-    "#47b66d"
+    "#47b66d",
   ],
   accent: [
     "#7fc97f",
@@ -45,7 +46,7 @@ const themes = {
     "#386cb0",
     "#f0027f",
     "#bf5b17",
-    "#666666"
+    "#666666",
   ],
   dark2: [
     "#1b9e77",
@@ -55,7 +56,7 @@ const themes = {
     "#66a61e",
     "#e6ab02",
     "#a6761d",
-    "#666666"
+    "#666666",
   ],
   paired: [
     "#a6cee3",
@@ -69,7 +70,7 @@ const themes = {
     "#cab2d6",
     "#6a3d9a",
     "#ffff99",
-    "#b15928"
+    "#b15928",
   ],
   pastel1: [
     "#fbb4ae",
@@ -80,7 +81,7 @@ const themes = {
     "#ffffcc",
     "#e5d8bd",
     "#fddaec",
-    "#f2f2f2"
+    "#f2f2f2",
   ],
   pastel2: [
     "#b3e2cd",
@@ -90,7 +91,7 @@ const themes = {
     "#e6f5c9",
     "#fff2ae",
     "#f1e2cc",
-    "#cccccc"
+    "#cccccc",
   ],
   set1: [
     "#e41a1c",
@@ -101,7 +102,7 @@ const themes = {
     "#ffff33",
     "#a65628",
     "#f781bf",
-    "#999999"
+    "#999999",
   ],
   set2: [
     "#66c2a5",
@@ -111,7 +112,7 @@ const themes = {
     "#a6d854",
     "#ffd92f",
     "#e5c494",
-    "#b3b3b3"
+    "#b3b3b3",
   ],
   set3: [
     "#8dd3c7",
@@ -125,7 +126,7 @@ const themes = {
     "#d9d9d9",
     "#bc80bd",
     "#ccebc5",
-    "#ffed6f"
+    "#ffed6f",
   ],
   solarized: [
     "#6c71c4",
@@ -135,8 +136,8 @@ const themes = {
     "#859900",
     "#2aa198",
     "#268bd2",
-    "#b58900"
-  ]
+    "#b58900",
+  ],
 };
 const colors = {
   "umich-blue": "#00274c",
@@ -150,7 +151,7 @@ const colors = {
   "jeanluc-red": "#EE7773",
   "jeanluc-yellow": "#F5BF70",
   "jeanluc-grey": "#828282",
-  "jeanluc-gray": "#828282"
+  "jeanluc-gray": "#828282",
 };
 const baseStyle = `
 svg {

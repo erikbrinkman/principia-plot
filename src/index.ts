@@ -11,7 +11,7 @@ export function xaxis(
   ticks: number[] = x.domain(),
   format: Format = d3.format(""),
   label: string = ""
-) {
+): void {
   return axes.xaxis(group, x, ticks, format, label);
 }
 
@@ -22,7 +22,7 @@ export function yaxis(
   ticks: number[] = y.domain(),
   format: Format = d3.format(""),
   label: string = ""
-) {
+): void {
   return axes.yaxis(group, y, ticks, format, label);
 }
 

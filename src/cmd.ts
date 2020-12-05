@@ -12,11 +12,14 @@ import { Evolution, EvolutionItem } from "./evolution";
 import { ComparisonZ } from "./comparisonz";
 import { JSDOM } from "jsdom";
 
+// TODO better typeing around config handling
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 // TODO At each branch choose between defined type specifications with type
 // guards
 
 // Curves
-const curves: { [i: string]: d3.CurveFactory } = {
+const curves: Record<string, d3.CurveFactory> = {
   linear: d3.curveLinear,
   step: d3.curveStep,
   step_before: d3.curveStepBefore,
@@ -24,31 +27,31 @@ const curves: { [i: string]: d3.CurveFactory } = {
   basis: d3.curveBasis,
   cardinal: d3.curveCardinal,
   monotone: d3.curveMonotoneX,
-  catmull_rom: d3.curveCatmullRom
+  catmull_rom: d3.curveCatmullRom,
 };
 
 // Symbols
-const symbols: { [i: string]: d3.SymbolType } = {
+const symbols: Record<string, d3.SymbolType> = {
   circle: d3.symbolCircle,
   cross: d3.symbolCross,
   diamond: d3.symbolDiamond,
   square: d3.symbolSquare,
   star: d3.symbolStar,
   triangle: d3.symbolTriangle,
-  wye: d3.symbolWye
+  wye: d3.symbolWye,
 };
 
 // Symbols
-const scales: { [i: string]: () => Scale } = {
+const scales: Record<string, () => Scale> = {
   linear: d3.scaleLinear,
   log: d3.scaleLog,
-  sqrt: d3.scaleSqrt
+  sqrt: d3.scaleSqrt,
 };
 
 // Dict of plotting evolution types
-const evoDatum: { [i: string]: (p: Evolution, d: any) => EvolutionItem } = {
+const evoDatum: Record<string, (p: Evolution, d: any) => EvolutionItem> = {
   line: (plot, data) => plot.line(data),
-  span: (plot, data) => plot.span(data)
+  span: (plot, data) => plot.span(data),
 };
 
 // Rendering functions
@@ -100,13 +103,13 @@ function compz(config: any, svg: SVGSVGElement) {
 
 const funcs: { [i: string]: (conf: any, svg: SVGSVGElement) => void } = {
   evolution: evo,
-  comparisonz: compz
+  comparisonz: compz,
 };
 
 const stylePaths = [
   path.join(path.dirname(__dirname), "resources", "princ_style.css"),
   path.join(os.homedir(), ".princ_style.css"),
-  ".princ_style.css"
+  ".princ_style.css",
 ];
 
 const args = yargs
@@ -117,12 +120,12 @@ const args = yargs
   .option("input", {
     alias: "i",
     default: "stdin",
-    describe: "Take input json from file."
+    describe: "Take input json from file.",
   })
   .option("output", {
     alias: "o",
     default: "stdout",
-    describe: "Output svg to file."
+    describe: "Output svg to file.",
   })
   .option("style", {
     alias: ["css", "c", "s"],
@@ -130,7 +133,7 @@ const args = yargs
     default: [],
     describe:
       "Add files as css styling for svg. Any file specified here will be added in addition to any of the following files in order: " +
-      stylePaths.map(p => '"' + p + '"').join(", ")
+      stylePaths.map((p) => '"' + p + '"').join(", "),
   })
   .help()
   .alias("version", "V")
@@ -139,7 +142,7 @@ const args = yargs
 
 const config = JSON.parse(
   fs.readFileSync(args.input === "stdin" ? 0 : args.input, {
-    encoding: "utf-8"
+    encoding: "utf-8",
   })
 );
 const dom = new JSDOM();
@@ -188,3 +191,5 @@ buff.push(null); // tslint:disable-line:no-null-keyword
 buff.pipe(
   args.output === "stdout" ? process.stdout : fs.createWriteStream(args.output)
 );
+
+/* eslint-enable @typescript-eslint/no-explicit-any */

@@ -1,5 +1,3 @@
-import "jest";
-import "assert";
 import * as cp from "child_process";
 import * as fs from "fs";
 
@@ -13,13 +11,14 @@ describe("Comparison Zero Plot", () => {
         "-c",
         "test/comparisonz.ex.bachelor.css",
         "-o",
-        "test/comparisonz.ex.bachelor.svg"
+        "test/comparisonz.ex.bachelor.svg",
       ],
       {
         input: base,
-        encoding: "utf-8"
+        encoding: "utf-8",
       }
     );
+    expect(fs.existsSync("test/comparisonz.ex.bachelor.svg")).toBeTruthy();
   });
 
   it("works with different themes", () => {
@@ -31,16 +30,19 @@ describe("Comparison Zero Plot", () => {
         "-c",
         "test/comparisonz.ex.bachelor.css",
         "-o",
-        "test/comparisonz.ex.bachelor.theme.svg"
+        "test/comparisonz.ex.bachelor.theme.svg",
       ],
       {
         input: JSON.stringify(spec),
-        encoding: "utf-8"
+        encoding: "utf-8",
       }
     );
+    expect(
+      fs.existsSync("test/comparisonz.ex.bachelor.theme.svg")
+    ).toBeTruthy();
   });
 
-  it("it allows manual color and line style changes", () => {
+  it("allows manual color and line style changes", () => {
     const spec = JSON.parse(base);
     spec.data[0].classed = "princ--umich-blue";
     spec.data[1].classed = "princ--ann-arbor-amethyst";
@@ -53,12 +55,15 @@ describe("Comparison Zero Plot", () => {
         "-c",
         "test/comparisonz.ex.bachelor.css",
         "-o",
-        "test/comparisonz.ex.bachelor.style.svg"
+        "test/comparisonz.ex.bachelor.style.svg",
       ],
       {
         input: JSON.stringify(spec),
-        encoding: "utf-8"
+        encoding: "utf-8",
       }
     );
+    expect(
+      fs.existsSync("test/comparisonz.ex.bachelor.style.svg")
+    ).toBeTruthy();
   });
 });
