@@ -27,17 +27,17 @@
   "homepage": "https://github.com/erikbrinkman/principia-plot#readme",
   "dependencies": {
     "clean-css": "^4.1.11",
-    "d3": "^6.2.0",
+    "d3": "^6.3.0",
     "jsdom": "^16.4.0",
-    "yargs": "^16.1.1"
+    "yargs": "^16.2.0"
   },
   "devDependencies": {
     "@types/clean-css": "^4.2.2",
     "@types/d3": "^6.2.0",
-    "@types/jest": "^26.0.15",
+    "@types/jest": "^26.0.16",
     "@types/jsdom": "16.2.5",
     "@types/node": "^14.14.10",
-    "@types/yargs": "^15.0.10",
+    "@types/yargs": "^15.0.11",
     "@typescript-eslint/eslint-plugin": "^4.9.1",
     "@typescript-eslint/parser": "^4.9.1",
     "eslint": "^7.15.0",
