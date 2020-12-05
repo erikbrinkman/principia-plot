@@ -1,8 +1,8 @@
 Principia Plot
 ==============
 
-[![npm](https://img.shields.io/npm/v/principia-plot.svg?style=flat-square)](https://www.npmjs.com/package/principia-plot)
-[![Travis](https://img.shields.io/travis/erikbrinkman/principia-plot.svg?style=flat-square)](https://travis-ci.org/erikbrinkman/principia-plot)
+[![npm](https://img.shields.io/npm/v/principia-plot.svg)](https://www.npmjs.com/package/principia-plot)
+[![build](https://github.com/erikbrinkman/principia-plot/workflows/build/badge.svg)](https://github.com/erikbrinkman/principia-plot/actions)
 
 A set of classes and a cli for generating plots roughly according to the guiding ideas behind [Principiae](http://www.principiae.be).
 This [video](https://youtu.be/6lm4wJ1qm0w) presents a quick discussion on the types of plots that this tool is meant to capture.
