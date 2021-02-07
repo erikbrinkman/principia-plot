@@ -1,5 +1,7 @@
-Principia Plot
-==============
+Principia Plot [deprecated]
+===========================
+
+> :warning: **WARNING:** This code has been deprecated and merged into [principia](https://github.com/erikbrinkman/principia)
 
 [![npm](https://img.shields.io/npm/v/principia-plot.svg)](https://www.npmjs.com/package/principia-plot)
 [![build](https://github.com/erikbrinkman/principia-plot/workflows/build/badge.svg)](https://github.com/erikbrinkman/principia-plot/actions)
